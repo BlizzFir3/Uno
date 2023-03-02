@@ -1,3 +1,25 @@
+# Résumé
+Lobby
+
+•    Création de session
+•    Saisie du Pseudo et de l’avatar
+
+Jeu
+
+•    Qui a joué
+•    Quelle carte a été posée en dernier
+•    Le type de la carte : normale, +2, +4, Changement sens, passe son tour.
+•    Si +2 ou +4 : joueur après pioche 2 cartes si il pose +2 alors celui après pioche, etc…
+•    Si changement de sens, on joue chacun son tour dans le sens opposé au départ
+•    Si passe son tour, le joueur suivant passe son tour
+•    Nombre de cartes restantes par personne
+•    Nombre de cartes restantes dans la pioche
+
+Fin de jeu
+
+•    Si un joueur a plus de cartes alors il a gagné
+•    Les autres cartes des joueurs sont alors comptabilisées en point celui avec le plus de points perd.
+
 # Règles et fonctionnalités:
 
 Accueil avec possibilité de rejoindre ou créer un lobby, dans les 2 cas selection d'un avatar (comme kculture) et d'un pseudo.
@@ -45,6 +67,6 @@ Carte speciales:
 
 - Compter les points lorsqu'un joueur a fini pour déterminer le classement (plus de cartes = plus de point = plus loin dans le classement)  
 
-* Regarder quelle carte vaut combien de points pour le calcul 
+* !! Regarder quelle carte vaut combien de points pour le calcul !!
 
 Page de fin de partie: Affiche le classement
