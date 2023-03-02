@@ -29,6 +29,10 @@ Pendant le jeu :
                             Changement sens
                             Interdiction de jouer
 
+    La couleur de la carte (Rouge, Verte, Bleue, Jaune)
+
+    Possibilité seulement de poser une carte de la même couleur ou du même type
+
     Si +2 ou +4 : joueur après pioche 2 ou 4 cartes si il pose +2 ou +4 alors celui après pioche, etc…
 
     Si changement de sens, on joue chacun son tour dans le sens opposé au départ
@@ -40,7 +44,7 @@ Pendant le jeu :
     Nombre de cartes restantes dans la pioche
 
 
-    
+
 
 Fin de jeu :
 
