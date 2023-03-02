@@ -1,5 +1,17 @@
 # Règles et fonctionnalités:
 
+Accueil avec possibilité de rejoindre ou créer un lobby, dans les 2 cas selection d'un avatar (comme kculture) et d'un pseudo.
+
+Création de lobby = génération de code de session ou et du lien de connexion
+
+Rejoindre = entrer ce code
+
+Lobby = voir les joueur présent leur pseudo et leurs avatars
+
+Jusqu'à 4 joueur
+
+Chatbox
+
 Debut assigner 7 carte aleatoire a chaque joueur.
 
 Choisir carte dans sa main pour la poser, en deux étapes (ou plus si plusieurs cartes) selection de la (ou des cartes) puis bouton poser, animation pour poser carte.
