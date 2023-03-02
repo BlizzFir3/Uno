@@ -1,4 +1,4 @@
-Règles et fonctionnalités:
+# Règles et fonctionnalités:
 
 Debut assigner 7 carte aleatoire a chaque joueur.
 
