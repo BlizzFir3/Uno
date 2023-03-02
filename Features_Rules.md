@@ -6,22 +6,23 @@ Création de lobby = génération de code de session ou et du lien de connexion
 
 Rejoindre = entrer ce code
 
-Lobby = voir les joueur présent leur pseudo et leurs avatars
+Lobby = voir les joueur présent leur pseudo et leurs avatars plus le nombre de joueur
 
 Jusqu'à 4 joueur
 
-Chatbox
+Chatbox pour discuter avec ses potes
 
 Debut assigner 7 carte aleatoire a chaque joueur.
 
-Choisir carte dans sa main pour la poser, en deux étapes (ou plus si plusieurs cartes) selection de la (ou des cartes) puis bouton poser, animation pour poser carte.
+Choisir carte dans sa main pour la poser, en deux étapes (ou plus si plusieurs cartes) selection de la (ou des) carte(s) puis bouton poser la carte, animation pour poser carte.
 
 Tirage de carte, obligatoire si aucune carte ne peux être posée, ou lorsque l'adversaire utilise un +2 ou +4.
 
 Main du joueur visible par lui uniquement
-Piocher
 
-Passer son tour quand fini
+Piocher dans la pile (cliquer sur la pile)
+
+Passer son tour quand fini (bouton)
 
 Quand pas son tour toutes les cartes sont grisées, idem quand on ne peut pas jouer une carte, elle est grisée
 
@@ -41,3 +42,9 @@ Carte speciales:
 - +2 le joueur suivant pioche 2 et ne joue pas ce tour, sauf si il pose un autre +2, auquel cas celui d'apres pioche 4, il peut utiliser a son tour un +2 etc...
 
 - change de sens: le jeux change de sens, aiguille de la montre vers l'inverse et vice versa
+
+- Compter les points lorsqu'un joueur a fini pour déterminer le classement (plus de cartes = plus de point = plus loin dans le classement)  
+
+* Regarder quelle carte vaut combien de points pour le calcul 
+
+Page de fin de partie: Affiche le classement
