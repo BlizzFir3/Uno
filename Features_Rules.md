@@ -1,19 +1,19 @@
 # Résumé
 Lobby
 
-•    Création de session
-•    Saisie du Pseudo et de l’avatar
+    Création de session
+    Saisie du Pseudo et de l’avatar
 
 Jeu
 
-•    Qui a joué
-•    Quelle carte a été posée en dernier
-•    Le type de la carte : normale, +2, +4, Changement sens, passe son tour.
-•    Si +2 ou +4 : joueur après pioche 2 cartes si il pose +2 alors celui après pioche, etc…
-•    Si changement de sens, on joue chacun son tour dans le sens opposé au départ
-•    Si passe son tour, le joueur suivant passe son tour
-•    Nombre de cartes restantes par personne
-•    Nombre de cartes restantes dans la pioche
+    Qui a joué
+    Quelle carte a été posée en dernier
+    Le type de la carte : normale, +2, +4, Changement sens, passe son tour.
+    Si +2 ou +4 : joueur après pioche 2 cartes si il pose +2 alors celui après pioche, etc…
+    Si changement de sens, on joue chacun son tour dans le sens opposé au départ
+    Si passe son tour, le joueur suivant passe son tour
+    Nombre de cartes restantes par personne
+    Nombre de cartes restantes dans la pioche
 
 Fin de jeu
 
