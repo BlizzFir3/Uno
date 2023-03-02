@@ -5,6 +5,8 @@ Page d'accueil :
 
     Vers quelle page on va :
         Rejoindre ou créer un lobby
+
+
     
 
 Dans le lobby :
@@ -12,6 +14,9 @@ Dans le lobby :
     Création de session
 
     Saisie du Pseudo et de l’avatar
+
+
+
 
 Pendant le jeu :
 
@@ -33,6 +38,9 @@ Pendant le jeu :
     Nombre de cartes restantes par personne
 
     Nombre de cartes restantes dans la pioche
+
+
+    
 
 Fin de jeu :
 
