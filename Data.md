@@ -43,6 +43,7 @@ Pendant le jeu :
 
     Nombre de cartes restantes dans la pioche
 
+    Si bouton UNO presser quand il reste 1 carte ou pour faire une contre UNO si la personne à qui il reste une carte appuie pas assez rapidement sur le bouton UNO
 
 
 
