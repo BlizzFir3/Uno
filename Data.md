@@ -9,9 +9,9 @@ Page d'accueil :
 
 Dans le lobby :
 
-•    Création de session
+    - Création de session
 
-•    Saisie du Pseudo et de l’avatar
+    - Saisie du Pseudo et de l’avatar
 
 Pendant le jeu :
 
