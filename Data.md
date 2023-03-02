@@ -1,7 +1,7 @@
 # Les données
 
 
-Page d'accueil : 
+# Page d'accueil : 
 
     Vers quelle page on va :
         Rejoindre ou créer un lobby
@@ -9,7 +9,7 @@ Page d'accueil :
 
     
 
-Dans le lobby :
+# Dans le lobby :
 
     Création de session
 
@@ -18,7 +18,7 @@ Dans le lobby :
 
 
 
-Pendant le jeu :
+# Pendant le jeu :
 
     Qui a joué
 
@@ -47,7 +47,7 @@ Pendant le jeu :
 
 
 
-Fin de jeu :
+# Fin de jeu :
 
     Si un joueur a plus aucune cartes alors il a gagné
 
