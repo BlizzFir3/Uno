@@ -1,6 +1,6 @@
 # Quentin
 - CSS
-- 
+- Lobby interaction and animation
 
 # Pierre
 - Html
