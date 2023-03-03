@@ -28,8 +28,12 @@
 			- Entrez code d'invitation
 			- Bouton valider
 				- Choix du pseudo
-				- Choix d'un avatar (créer des avatar)
+				- Choix d'un avatar (créer des avatar) Avatar = relou, faire génération automatique
 				- Bouton valider
 					- Vu des joueurs dans le lobby, leur pseudo et leur avatar
 					- Bouton pour copier le lien et/ou le code d'invitation
 					- Bouton lancer la partie
+
+
+					Du plus gros au plus petit ou l'inverse
+					Se renseigner sur les sockets (socket.io)
