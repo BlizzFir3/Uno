@@ -49,16 +49,23 @@
         </form>
       </div>
     </div>
-      <div class="popup" id="popupForm">
-        <form action="/action_page.php" class="form-container">
-          <h2>Rejoindre une partie</h2>
-          <label for="codesession">
-            <strong>Code de session</strong>
-          </label>
-          <input type="text" id="code" placeholder="Entrez un code de session" name="codesession" required />
-          <button type="submit" class="btn">Rejoindre</button>
-        </form>
-      </div>
+	<div class="box">
+        <a class="button" href="#popup1">Rejoindre une partie</a>
+    </div>
+    <div class="login-popup">
+        <div class="form-popup" id="popupForm">
+          <form action="/action_page.php" class="form-container">
+          </div>
+    </div>
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Rejoindre une partie</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                <input type="text" id="code" placeholder="Entrez un code de session" name="codesession" required />
+                <button type="submit" class="btn">Rejoindre</button>
+            </div>
+        </div>
     </div>
 
 	<script>
