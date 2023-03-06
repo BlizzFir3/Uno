@@ -46,7 +46,7 @@ button:hover {
 	color: white;
 }
 
-.uno-card {
+/*.uno-card {
 	background: linear-gradient(90deg, #FFF, #EEE);
 	border-radius: 5px;
 	border: 1px solid #000;
@@ -88,7 +88,55 @@ button:hover {
   
   .uno-card .color.yellow {
 	background: linear-gradient(90deg, #FF0, #CC0);
+  }*/
+  .uno-hand {
+	display: flex;
+	justify-content: center;
   }
   
-
+  .uno-card {
+	background: linear-gradient(90deg, #FFF, #EEE);
+	border-radius: 5px;
+	border: 1px solid #000;
+	height: 120px;
+	width: 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-right: 10px;
+  }
+  
+  .uno-card .number {
+	font-size: 32px;
+	font-weight: bold;
+	margin: 5px;
+  }
+  
+  .uno-card .symbol {
+	font-size: 20px;
+	margin: 5px;
+  }
+  
+  .uno-card .color {
+	height: 20px;
+	width: 80px;
+	border-radius: 5px 5px 0 0;
+  }
+  
+  .uno-card .color.blue {
+	background: linear-gradient(90deg, #0AF, #06D);
+  }
+  
+  .uno-card .color.green {
+	background: linear-gradient(90deg, #6C0, #3C0);
+  }
+  
+  .uno-card .color.red {
+	background: linear-gradient(90deg, #F00, #C00);
+  }
+  
+  .uno-card .color.yellow {
+	background: linear-gradient(90deg, #FF0, #CC0);
+  }
+  
 
