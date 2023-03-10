@@ -23,6 +23,14 @@ background-position: 0% 50%;
 }
 }
 
+input {
+  background-color: #EEEEEE;
+  border: none;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  width: 100%;
+}
+
 h1 {
 	color: white;
 	font-size: 48px;
