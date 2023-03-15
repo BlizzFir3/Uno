@@ -36,6 +36,7 @@ h1 {
 	font-size: 48px;
 	margin-bottom: 30px;
 }
+
 button {
 	background-color: white;
 	color: black;
@@ -305,4 +306,5 @@ input[type="text" i] {
 }
 div {
   display: block;
+  align-self: center;
 }
