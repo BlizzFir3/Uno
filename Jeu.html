@@ -9,12 +9,129 @@
 
     <body>
         <h1>Jeu UNO</h1>
-
-    <br>
-    <br>
-        <button onclick="window.location.href='Classement.html'">
-            Aller au Classement
-        </button>
+    
+    <div class="block">
+        <div class="game-field perspective red">
+            <div id="player">(BTS)
+              <div class="player_hand">
+                <div class="card red">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card red">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card blue">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card blue">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card yellow">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card green">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card black">
+                  <div class="bckg"></div>
+                </div>
+              </div>
+            </div>
+            <div id="player_left">Joueur Gauche
+                <div class="player_hand">
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+              </div>
+            </div>
+            <div id="player_top">Joueur Haut
+              <div class="player_hand">
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+              </div>
+            </div>
+            <div id="player_right">Joueur Droit
+              <div class="player_hand">
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned">
+                  <div class="bckg"></div>
+                </div>
+              </div>
+            </div>
+            <div id="piles_area">
+              <div id="draw_pile">
+                <div class="card turned top-card">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card turned pile">
+                  <div class="bckg"></div>
+                </div>
+              </div>
+              <div id="discard_pile">
+                <div class="card top-card red">
+                  <div class="bckg"></div>
+                </div>
+                <div class="card pile">
+                  <div class="bckg"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
     </body>
-	<script src="jeu.js"></script>
+	<script src="GameLogique.js"></script>
 </html>
