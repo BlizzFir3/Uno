@@ -39,3 +39,47 @@ function closeForm() {
     }window.CP.exitedLoop(0);
     return hand;
   }
+
+const players = [
+  { name: "Alice", score: 10 },
+  { name: "Bob", score: 5 },
+  { name: "Charlie", score: 15 },
+  { name: "David", score: 8 },
+  { name: "Eve", score: 12 }
+];
+
+
+function sortPlayersByScoreDesc(players) {
+  return players.sort((a, b) => b.score - a.score);
+}
+
+function showRankingPopup() {
+  const sortedPlayers = sortPlayersByScoreDesc(players);
+
+  const popupContent = document.createElement("div");
+  popupContent.innerHTML = "<h2>Classement</h2>";
+  const rankingList = document.createElement("ul");
+  sortedPlayers.forEach((player, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${index+1}. ${player.name} (${player.score} points)`;
+    rankingList.appendChild(li);
+  });
+  popupContent.appendChild(rankingList);
+
+  
+  const popup = window.open("", "rankingPopup", "width=400,height=400");
+  popup.document.body.appendChild(popupContent);
+}
+
+function showEndGame() {
+  const endGame = document.getElementById("end-game");
+  const scoreSpan = document.getElementById("score");
+  const score = 42; 
+  scoreSpan.textContent = score;
+  endGame.style.display = "block";
+
+const showRankingBtn = document.getElementById("show-ranking-btn");
+showRankingBtn.addEventListener("click", showRankingPopup);
+}
+
+showEndGame();
