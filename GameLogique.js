@@ -82,4 +82,71 @@ const showRankingBtn = document.getElementById("show-ranking-btn");
 showRankingBtn.addEventListener("click", showRankingPopup);
 }
 
+class Card {
+  AddInto(parent, color) {
+    let codeToAdd = "";
+    switch (color) {
+      case "red":
+        codeToAdd = `<div class="card red" onclick="MoveCardToPile(this)">
+        <div class="bckg"></div>
+        </div>`;
+        break;
+      case "blue":
+        codeToAdd = `<div class="card blue" onclick="MoveCardToPile(this)">
+        <div class="bckg"></div>
+        </div>`;
+        break;
+      case "green":
+        codeToAdd = `<div class="card green" onclick="MoveCardToPile(this)">
+        <div class="bckg"></div>
+        </div>`;
+        break;
+      case "black":
+        codeToAdd = `<div class="card black" onclick="MoveCardToPile(this)">
+        <div class="bckg"></div>
+        </div>`;
+        break;
+      case "yellow":
+        codeToAdd = `<div class="card yellow" onclick="MoveCardToPile(this)">
+        <div class="bckg"></div>
+        </div>`;
+        break;
+    }
+    parent.innerHTML = codeToAdd;
+  }
+}
+
+function GetCardFromPioche() {
+  const pioche = document.getElementsByClassName("card turned top-card")[0];
+  const playerMain = document.getElementById("player_hand");
+  if (playerMain) {
+    const carte = new Card();
+    carte.AddInto(playerMain, "red");
+  } else {
+    console.error("Element with ID 'player_hand' not found.");
+  }
+}
+
+
+function MoveCardToPile(carte){
+  const pile = document.getElementById("discard_pile");
+  const rect1 = carte.getBoundingClientRect();
+  const rect2 = pile.getBoundingClientRect();
+  setTimeout(() => {
+    carte.parentNode.removeChild(carte);
+    const nouvelleCarte = carte.cloneNode(true);
+    nouvelleCarte.style.zIndex = "100"; // Met la nouvelle carte au premier plan
+    pile.appendChild(nouvelleCarte);
+    nouvelleCarte.style.transition = "";
+    nouvelleCarte.style.transform = "";
+  }, 500);
+  const dx = rect2.left - rect1.left;
+  const dy = rect2.top - rect1.top;
+  carte.style.transition = "transform 0.5s ease-in-out";
+  carte.style.transform = `translate(${dx}px, ${dy}px)`;
+  carte.style.zIndex = "99"; // Met la carte d'origine sous la nouvelle carte
+  carte.style.position = "absolute";
+}
+
+
 showEndGame();
