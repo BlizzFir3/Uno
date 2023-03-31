@@ -112,17 +112,17 @@ class Card {
         </div>`;
         break;
     }
-    parent.innerHTML = codeToAdd;
+    parent.innerHTML += codeToAdd;
   }
+
+  
 }
 
 function GetCardFromPioche() {
-  const pioche = document.getElementsByClassName("card turned top-card")[0];
-  const playerMain = document.getElementById("player_hand");
-  if (playerMain) {
-    const carte = new Card();
-    carte.AddInto(playerMain, "red");
-  }
+  const pioche = document.getElementById("card turned top-card");
+  let playerMain = document.getElementsByClassName("player_hand")[0];
+  let carte = new Card();
+  carte.AddInto(playerMain, "red");
 }
 
 
