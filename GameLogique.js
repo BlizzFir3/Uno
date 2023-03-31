@@ -122,8 +122,6 @@ function GetCardFromPioche() {
   if (playerMain) {
     const carte = new Card();
     carte.AddInto(playerMain, "red");
-  } else {
-    console.error("Element with ID 'player_hand' not found.");
   }
 }
 
