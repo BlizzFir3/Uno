@@ -446,7 +446,7 @@ div {
   box-shadow: none;
 }
 .game-field {
-  height: 100%;
+  height: 800px;
   display: grid;
   justify-content: center;
   align-content: center;
@@ -475,34 +475,34 @@ div {
 .player_hand {
   position: relative;
 }
-.player_hand .card {
+.player_hand >.card {
   position: absolute;
 }
-.player_hand .card:nth-child(1) {
+.player_hand >.card:nth-child(1) {
   left: 2.2em;
 }
-.player_hand .card:nth-child(2) {
+.player_hand >.card:nth-child(2) {
   left: 4.4em;
 }
-.player_hand .card:nth-child(3) {
+.player_hand >.card:nth-child(3) {
   left: 6.600000000000001em;
 }
-.player_hand .card:nth-child(4) {
+.player_hand >.card:nth-child(4) {
   left: 8.8em;
 }
-.player_hand .card:nth-child(5) {
+.player_hand >.card:nth-child(5) {
   left: 11em;
 }
-.player_hand .card:nth-child(6) {
+.player_hand >.card:nth-child(6) {
   left: 13.200000000000001em;
 }
-.player_hand .card:nth-child(7) {
+.player_hand >.card:nth-child(7) {
   left: 15.400000000000002em;
 }
-#player .player_hand .card {
+#player .player_hand >.card {
   cursor: pointer;
 }
-#player .player_hand .card:hover {
+#player .player_hand >.card:hover {
   transform-origin: left bottom;
   transform: rotate(-10deg) translateY(-0.5em);
 }
