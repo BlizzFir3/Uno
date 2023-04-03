@@ -45,7 +45,6 @@ const players = [
   { name: "Bob", score: 5 },
   { name: "Charlie", score: 15 },
   { name: "David", score: 8 },
-  { name: "Eve", score: 12 }
 ];
 
 
@@ -145,6 +144,5 @@ function MoveCardToPile(carte){
   carte.style.zIndex = "99"; // Met la carte d'origine sous la nouvelle carte
   carte.style.position = "absolute";
 }
-
 
 showEndGame();
