@@ -61,11 +61,12 @@ box-sizing: border-box;
 }
 
 
+
 /* Stylez et fixez le bouton sur la page */
 .open-button {
-  background-color: white;
-  color: #8BC34A;
-  font-size: 24px;
+  background-color: #0d6efd;
+  color: #fff;
+  font-size: 18px;
   border-radius: 20px;
   padding: 10px 35px;
   margin: 10px;
@@ -127,6 +128,57 @@ box-sizing: border-box;
 }
 /* Planez les effets pour les boutons */
 .form-container .btn:hover,
+.open-button:hover {
+  opacity: 1;
+}
+
+.formu-popup {
+  display: none;
+  position: fixed;
+  left: 45%;
+  top: 5%;
+  transform: translate(-45%, 5%);
+  border: 2px solid #666;
+  z-index: 9;
+}
+/* Styles pour le conteneur de la forme */
+.formu-container {
+  max-width: 350px;
+  padding: 20px;
+  background-color: #fff;
+}
+/* Largeur complète pour les champs de saisie */
+.formu-container input[type="text"],
+.formu-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #eee;
+}
+/* Quand les entrées sont concentrées, faites quelque chose */
+.formu-container input[type="text"]:focus,
+.formu-container input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+/* Stylez le bouton de connexion */
+.formu-container .btn {
+  background-color: #8ebf42;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+/* Stylez le bouton pour annuler */
+.formu-container .cancel {
+  background-color: #cc0000;
+}
+/* Planez les effets pour les boutons */
+.formu-container .btn:hover,
 .open-button:hover {
   opacity: 1;
 }

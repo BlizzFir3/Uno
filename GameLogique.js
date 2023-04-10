@@ -6,6 +6,14 @@ function closeForm() {
 	document.getElementById("popupForm").style.display = "none";
   }
 
+function openFormu() {
+  document.getElementById("popupFormu").style.display = "block";
+  }
+  
+function closeFormu() {
+  document.getElementById("popupFormu").style.display = "none";
+  }
+
   console.clear();
 
   const DECK = [
