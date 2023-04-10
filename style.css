@@ -346,36 +346,12 @@ div {
   transform: translate(-50%, -50%);
   font-size: 3em;
 }
-.card.red {
-  color: #dc251c;
+
+.card .bckg{
+  color: red;
+  background-color: red;
 }
-.card.red .bckg {
-  background-color: #dc251c;
-}
-.card.yellow {
-  color: #fcf604;
-}
-.card.yellow .bckg {
-  background-color: #fcf604;
-}
-.card.blue {
-  color: #0493de;
-}
-.card.blue .bckg {
-  background-color: #0493de;
-}
-.card.green {
-  color: #018d41;
-}
-.card.green .bckg {
-  background-color: #018d41;
-}
-.card.black {
-  color: #1f1b18;
-}
-.card.black .bckg {
-  background-color: #1f1b18;
-}
+
 .card.turned:hover {
   cursor: default;
 }
@@ -475,30 +451,7 @@ div {
 .player_hand {
   position: relative;
 }
-.player_hand >.card {
-  position: absolute;
-}
-.player_hand >.card:nth-child(1) {
-  left: 2.2em;
-}
-.player_hand >.card:nth-child(2) {
-  left: 4.4em;
-}
-.player_hand >.card:nth-child(3) {
-  left: 6.600000000000001em;
-}
-.player_hand >.card:nth-child(4) {
-  left: 8.8em;
-}
-.player_hand >.card:nth-child(5) {
-  left: 11em;
-}
-.player_hand >.card:nth-child(6) {
-  left: 13.200000000000001em;
-}
-.player_hand >.card:nth-child(7) {
-  left: 15.400000000000002em;
-}
+
 #player .player_hand >.card {
   cursor: pointer;
 }

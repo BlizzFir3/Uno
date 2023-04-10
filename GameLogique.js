@@ -81,37 +81,44 @@ const showRankingBtn = document.getElementById("show-ranking-btn");
 showRankingBtn.addEventListener("click", showRankingPopup);
 }
 
+
+function LoadUnoGame(){
+  window.location.href = "Jeu.html";
+}
+
+window.addEventListener("load", function() {
+  for (let i = 0; i < 10; i++) {
+    let playerMain = document.getElementsByClassName("player_hand")[0];
+    let carte = new Card();
+    let randomCol =  GetRandomCardColor();
+    carte.AddInto(playerMain,randomCol,2.2);
+  }
+});
+
+function GetRandomCardColor(){
+  var colors = ["red", "green", "blue", "yellow"];
+  var randomIndex = RandomValue(0, colors.length - 1);
+  return colors[randomIndex];
+}
+function RandomValue(min, max ){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 class Card {
-  AddInto(parent, color) {
+  AddInto(parent, color,decalage) {
     let codeToAdd = "";
-    switch (color) {
-      case "red":
-        codeToAdd = `<div class="card red" onclick="MoveCardToPile(this)">
-        <div class="bckg"></div>
-        </div>`;
-        break;
-      case "blue":
-        codeToAdd = `<div class="card blue" onclick="MoveCardToPile(this)">
-        <div class="bckg"></div>
-        </div>`;
-        break;
-      case "green":
-        codeToAdd = `<div class="card green" onclick="MoveCardToPile(this)">
-        <div class="bckg"></div>
-        </div>`;
-        break;
-      case "black":
-        codeToAdd = `<div class="card black" onclick="MoveCardToPile(this)">
-        <div class="bckg"></div>
-        </div>`;
-        break;
-      case "yellow":
-        codeToAdd = `<div class="card yellow" onclick="MoveCardToPile(this)">
-        <div class="bckg"></div>
-        </div>`;
-        break;
-    }
+    let elements = parent.querySelectorAll(".card");
+    let count = elements.length;
+    codeToAdd = `<div class="card" id="` + count +`" onclick="MoveCardToPile(this)">
+    <div class="bckg"></div>
+    </div>`;
     parent.innerHTML += codeToAdd;
+    let MaCarte = document.getElementById("" + count);
+    MaCarte.style.color = color;
+    MaCarte.style.position = "absolute";
+    MaCarte.style.left = `${decalage * count}em`;
+    let MaCarteBckg = MaCarte.querySelector(".bckg");
+    MaCarteBckg.style.backgroundColor = color;
   }
 
   
@@ -121,7 +128,8 @@ function GetCardFromPioche() {
   const pioche = document.getElementById("card turned top-card");
   let playerMain = document.getElementsByClassName("player_hand")[0];
   let carte = new Card();
-  carte.AddInto(playerMain, "red");
+  let randomColor = GetRandomCardColor();
+  carte.AddInto(playerMain, randomColor,2.2);
 }
 
 
@@ -129,20 +137,21 @@ function MoveCardToPile(carte){
   const pile = document.getElementById("discard_pile");
   const rect1 = carte.getBoundingClientRect();
   const rect2 = pile.getBoundingClientRect();
+  carte.style.position = "absolute";
+  carte.style.left = `${0}em`;
+  carte.style.transition = "transform 0.5s ease-in-out";
+  carte.style.zIndex = "99"; // Met la carte d'origine sous la nouvelle carte
+  carte.style.transform = `translate(${rect2.left - rect1.left}px, ${rect2.top - rect1.top}px)`;
+  
   setTimeout(() => {
-    carte.parentNode.removeChild(carte);
     const nouvelleCarte = carte.cloneNode(true);
     nouvelleCarte.style.zIndex = "100"; // Met la nouvelle carte au premier plan
     pile.appendChild(nouvelleCarte);
     nouvelleCarte.style.transition = "";
     nouvelleCarte.style.transform = "";
+    carte.parentNode.removeChild(carte);
   }, 500);
-  const dx = rect2.left - rect1.left;
-  const dy = rect2.top - rect1.top;
-  carte.style.transition = "transform 0.5s ease-in-out";
-  carte.style.transform = `translate(${dx}px, ${dy}px)`;
-  carte.style.zIndex = "99"; // Met la carte d'origine sous la nouvelle carte
-  carte.style.position = "absolute";
+  
+  
 }
 
-showEndGame();
