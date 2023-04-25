@@ -55,7 +55,6 @@ const players = [
   { name: "David", score: 8 },
 ];
 
-
 function sortPlayersByScoreDesc(players) {
   return players.sort((a, b) => b.score - a.score);
 }
@@ -72,7 +71,6 @@ function showRankingPopup() {
     rankingList.appendChild(li);
   });
   popupContent.appendChild(rankingList);
-
   
   const popup = window.open("", "rankingPopup", "width=400,height=400");
   popup.document.body.appendChild(popupContent);
@@ -128,8 +126,6 @@ class Card {
     let MaCarteBckg = MaCarte.querySelector(".bckg");
     MaCarteBckg.style.backgroundColor = color;
   }
-
-  
 }
 
 function GetCardFromPioche() {
@@ -139,7 +135,6 @@ function GetCardFromPioche() {
   let randomColor = GetRandomCardColor();
   carte.AddInto(playerMain, randomColor,2.2);
 }
-
 
 function MoveCardToPile(carte){
   const pile = document.getElementById("discard_pile");
@@ -162,4 +157,3 @@ function MoveCardToPile(carte){
   
   
 }
-
