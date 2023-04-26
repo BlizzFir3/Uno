@@ -2,7 +2,6 @@
 	- Créer les différentes pages (acceuil, lobby (créer), lobby (rejoindre) jeu et classement) HTML
 	- Les reliés correctement (Si clique sur tel bouton -> tel page, etc...)
 	- CSS pour donner un minimum de gueule au début (plus tard je fais une master classe, est-ce que c'est bon pour vous ?)
-	- 
 	
 # Cartes + phase de jeu UX
 	- Créer le deck (la pioche, liste des cartes)
