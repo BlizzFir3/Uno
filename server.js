@@ -24,7 +24,7 @@ app.use(express.static(__dirname + '/public'));
 
 // Définir la route principale
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/public/views/index.html');
+    res.sendFile(__dirname + 'Accueil.html');
 });
 
 // Créer une route pour la requête POST du jeu Uno
