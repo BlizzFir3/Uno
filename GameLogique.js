@@ -16,7 +16,7 @@ function closeFormu() {
 
   console.clear();
 
-  const DECK = [
+ /*const DECK = [
   "0r", "0y", "0b", "0g", 
   "1r", "1r", "1y", "1y", "1b", "1b", "1g", "1g", 
   "2r", "2r", "2y", "2y", "2b", "2b", "2g", "2g",  
@@ -36,7 +36,7 @@ function closeFormu() {
   
   let availableCards = DECK;
   let drawPileCards = [];
-  let discardPileCards = [];
+  let discardPileCards = [];*/
   
   function createHand(handSize = 7) {
     let hand = [];
