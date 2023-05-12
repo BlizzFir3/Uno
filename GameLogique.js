@@ -14,146 +14,622 @@ function closeFormu() {
   document.getElementById("popupFormu").style.display = "none";
   }
 
+function LoadUnoGame(){
+  window.location.href = "index.html";
+  }
+
   console.clear();
 
- /*const DECK = [
-  "0r", "0y", "0b", "0g", 
-  "1r", "1r", "1y", "1y", "1b", "1b", "1g", "1g", 
-  "2r", "2r", "2y", "2y", "2b", "2b", "2g", "2g",  
-  "3r", "3r", "3y", "3y", "3b", "3b", "3g", "3g", 
-  "4r", "4r", "4y", "4y", "4b", "4b", "4g", "4g", 
-  "5r", "5r", "5y", "5y", "5b", "5b", "5g", "5g", 
-  "6r", "6r", "6y", "6y", "6b", "6b", "6g", "6g", 
-  "7r", "7r", "7y", "7y", "7b", "7b", "7g", "7g", 
-  "8r", "8r", "8y", "8y", "8b", "8b", "8g", "8g", 
-  "9r", "9r", "9y", "9y", "9b", "9b", "9g", "9g", 
-  "+2r", "+2r", "+2y", "+2y", "+2b", "+2b", "+2g", "+2g", 
-  "sr", "sr", "sy", "sy", "sb", "sb", "sg", "sg", 
-  "rr", "rr", "ry", "ry", "rb", "rb", "rg", "rg", 
-  "w", "w", "w", "w",
-  "+4", "+4", "+4", "+4" 
-  ];
+  const deck = [];
+  const table = [];
+  const colors = ["darkred","orange","darkgreen","darkblue"];
+  const symbols = ["0","1","2","3","4","5","6","7","8","9","reverse","block","p2"];
+  const jokers = ["changeColor","p4"];
   
-  let availableCards = DECK;
-  let drawPileCards = [];
-  let discardPileCards = [];*/
+  let turn = 7000;
+  let direction = 1;
   
-  function createHand(handSize = 7) {
-    let hand = [];
-    for (let i = 0; i < handSize; i++) {if (window.CP.shouldStopExecution(0)) break;
-      let cardIndex = Math.floor(Math.random() * availableCards.length);
-      let card = availableCards.splice(cardIndex, 1)[0];
-      hand.push(card);
-    }window.CP.exitedLoop(0);
-    return hand;
-  }
-
-const players = [
-  { name: "Alice", score: 10 },
-  { name: "Bob", score: 5 },
-  { name: "Charlie", score: 15 },
-  { name: "David", score: 8 },
-];
-
-function sortPlayersByScoreDesc(players) {
-  return players.sort((a, b) => b.score - a.score);
-}
-
-function showRankingPopup() {
-  const sortedPlayers = sortPlayersByScoreDesc(players);
-
-  const popupContent = document.createElement("div");
-  popupContent.innerHTML = "<h2>Classement</h2>";
-  const rankingList = document.createElement("ul");
-  sortedPlayers.forEach((player, index) => {
-    const li = document.createElement("li");
-    li.textContent = `${index+1}. ${player.name} (${player.score} points)`;
-    rankingList.appendChild(li);
-  });
-  popupContent.appendChild(rankingList);
+  const players = [];
   
-  const popup = window.open("", "rankingPopup", "width=400,height=400");
-  popup.document.body.appendChild(popupContent);
-}
-
-function showEndGame() {
-  const endGame = document.getElementById("end-game");
-  const scoreSpan = document.getElementById("score");
-  const score = 42; 
-  scoreSpan.textContent = score;
-  endGame.style.display = "block";
-
-const showRankingBtn = document.getElementById("show-ranking-btn");
-showRankingBtn.addEventListener("click", showRankingPopup);
-}
-
-
-function LoadUnoGame(){
-  window.location.href = "Jeu.html";
-}
-
-window.addEventListener("load", function() {
-  for (let i = 0; i < 10; i++) {
-    let playerMain = document.getElementsByClassName("player_hand")[0];
-    let carte = new Card();
-    let randomCol =  GetRandomCardColor();
-    carte.AddInto(playerMain,randomCol,2.2);
+  function createCards() {
+  
+      for (let color of colors){
+  
+          for (let i = 0 ; i < symbols.length ; i ++) {
+      
+              let card = {
+                  color: color,
+                  symbol: symbols[i]
+              }
+              
+              if (i==0) {
+                  deck.push(card);
+              } else {
+                  deck.push(card);
+                  deck.push(card);
+              }
+          }
+      }
+      
+      for (let joker of jokers){
+          let card = {
+              color: "black",
+              symbol: joker
+          }
+          deck.push(card);
+          deck.push(card);
+          deck.push(card);
+          deck.push(card);
+      }
+  
   }
-});
-
-function GetRandomCardColor(){
-  var colors = ["red", "green", "blue", "yellow"];
-  var randomIndex = RandomValue(0, colors.length - 1);
-  return colors[randomIndex];
-}
-function RandomValue(min, max ){
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-class Card {
-  AddInto(parent, color,decalage) {
-    let codeToAdd = "";
-    let elements = parent.querySelectorAll(".card");
-    let count = elements.length;
-    codeToAdd = `<div class="card" id="` + count +`" onclick="MoveCardToPile(this)">
-    <div class="bckg"></div>
-    </div>`;
-    parent.innerHTML += codeToAdd;
-    let MaCarte = document.getElementById("" + count);
-    MaCarte.style.color = color;
-    MaCarte.style.position = "absolute";
-    MaCarte.style.left = `${decalage * count}em`;
-    let MaCarteBckg = MaCarte.querySelector(".bckg");
-    MaCarteBckg.style.backgroundColor = color;
+  
+  function shuffleCards() {
+      deck.sort( () => Math.random() - 0.5 );
   }
-}
-
-function GetCardFromPioche() {
-  const pioche = document.getElementById("card turned top-card");
-  let playerMain = document.getElementsByClassName("player_hand")[0];
-  let carte = new Card();
-  let randomColor = GetRandomCardColor();
-  carte.AddInto(playerMain, randomColor,2.2);
-}
-
-function MoveCardToPile(carte){
-  const pile = document.getElementById("discard_pile");
-  const rect1 = carte.getBoundingClientRect();
-  const rect2 = pile.getBoundingClientRect();
-  carte.style.position = "absolute";
-  carte.style.left = `${0}em`;
-  carte.style.transition = "transform 0.5s ease-in-out";
-  carte.style.zIndex = "99"; // Met la carte d'origine sous la nouvelle carte
-  carte.style.transform = `translate(${rect2.left - rect1.left}px, ${rect2.top - rect1.top}px)`;
+  
+  function giveCardsToPlayers() {
+  
+      for (let j = 0 ; j < 4 ; j ++) {
+  
+          let playerCards = [];
+          for (let i = 0 ; i < 7 ; i++) {
+              playerCards.push(deck[0]);
+              deck.shift();
+          }
+          playerCards = organizeCards(playerCards);
+          players.push(playerCards);
+      }
+  }
+  
+  function organizeCards(playerCards) {
+  
+      let organizedCards = [];
+  
+      for( let color of ['black'].concat(colors) ) {
+          let filteredCards = playerCards.filter( e => e.color == color );
+          organizedCards = organizedCards.concat(filteredCards.sort((a,b) => {
+              if (a.symbol > b.symbol) return 1;
+              if (a.symbol < b.symbol) return -1;
+              return 0;
+          }));
+      }
+      return organizedCards;
+  }
+  
+  function startTable() {
+      
+      for(let i = 0; i < deck.length ; i ++) {
+  
+          if ( !isNaN(parseInt( deck[i].symbol )) ) {
+              table.push( deck[i] );
+              deck.splice(i,1);
+              return;
+          }
+      }
+  }
+  
+  function renderDeck() {
+  
+      let deckObject = document.getElementById("deck");
+  
+      let symbolHTML;
+      
+      let carta = deck[0];
+  
+      if ( carta.symbol == "reverse" ) symbolHTML = '<ion-icon name="refresh-outline"></ion-icon>';
+      else if ( carta.symbol == "block" ) symbolHTML = '<ion-icon name="ban-outline"></ion-icon>';
+      else if ( carta.symbol == "changeColor" ) symbolHTML = '<ion-icon name="color-palette-outline"></ion-icon>';
+      else if ( carta.symbol == "p2" ) symbolHTML = `<p>+2</p>`;
+      else if ( carta.symbol == "p4" ) symbolHTML = `<p>+4</p>`;
+      else symbolHTML = `<p>${carta.symbol}</p>`;
+  
+      deckObject.innerHTML = `
+  
+      <div class="card verso">
+          <div class="logo">
+              UNO
+          </div>
+      </div>
+      <div style="background-color: ${carta.color};" class="card frente">
+          <div class="logo">
+              ${symbolHTML}
+          </div>
+      </div>
+      `; // &#960
+  }
+  
+  function renderTable() {
+  
+      let tableCardObject = document.getElementById("tableCard");
+      let numCards = tableCardObject.children.length;
+  
+      let carta = table[table.length-1];
+  
+      let angle;
+      if (numCards == 0 || carta.symbol == "p4" || carta.symbol == "changeColor") angle = 0;
+      else angle = ( Math.random() - 0.5 ) * 2 * 15;
+      
+      let symbolHTML;
+  
+      if ( carta.symbol == "reverse" ) symbolHTML = '<ion-icon name="refresh-outline"></ion-icon>';
+      else if ( carta.symbol == "block" ) symbolHTML = '<ion-icon name="ban-outline"></ion-icon>';
+      else if ( carta.symbol == "changeColor" ) symbolHTML = '<ion-icon name="color-palette-outline"></ion-icon>';
+      else if ( carta.symbol == "p2" ) symbolHTML = `<p>+2</p>`;
+      else if ( carta.symbol == "p4" ) symbolHTML = `<p>+4</p>`;
+      else symbolHTML = `<p>${carta.symbol}</p>`;
+  
+      tableCardObject.innerHTML += `
+      <div style="background-color: ${carta.color}; transform: rotateZ(${angle}deg);" class="card">
+          <div class="logo">
+              ${symbolHTML}
+          </div>
+      </div>
+      `;
+  
+      numCards = tableCardObject.children.length;
+      if (numCards == 6) tableCardObject.children[0].remove();
+  
+      let turnLogo = document.querySelector(".table ion-icon");
+      turnLogo.style.color = carta.color;
+  }
+  
+  function sortCardsOnContainer(){
+  
+      let container = document.querySelector(".cards-container");
+      let cards = [...container.children];
+  
+      if (players[0].length == 0) return;
+  
+      let numCards = cards.length;
+      let cardWidth = 110;
+  
+      let containerWidth = container.clientWidth;
+      let windowWidth = window.innerWidth;
+  
+      let desiredWidth = numCards*cardWidth - 8 * (numCards-3);
+  
+      if ( desiredWidth <= windowWidth && desiredWidth <= containerWidth ) return;
+  
+      let offset;
+  
+      if ( desiredWidth >  windowWidth) {
+          offset = ( cards.length * cardWidth - windowWidth ) / ( cards.length - 3 );
+      } else {
+          offset = 8;
+      }
+      cards[0].style.marginLeft = `0px`;
+      for (let i = 1; i < cards.length; i++) {
+          cards[i].style.marginLeft = `-${offset}px`;
+      }
+  }
+  
+  function renderUserCards() {
+      let cardsContainer = document.getElementById("cardsContainer");
+      cardsContainer.innerHTML = "";
+  
+      let cont = 0;
+      for (let carta of players[0]) {
+  
+          let symbolHTML;
+  
+          if ( carta.symbol == "reverse" ) symbolHTML = '<ion-icon name="refresh-outline"></ion-icon>';
+          else if ( carta.symbol == "block" ) symbolHTML = '<ion-icon name="ban-outline"></ion-icon>';
+          else if ( carta.symbol == "changeColor" ) symbolHTML = '<ion-icon name="color-palette-outline"></ion-icon>';
+          else if ( carta.symbol == "p2" ) symbolHTML = '+2';
+          else if ( carta.symbol == "p4" ) symbolHTML = '+4';
+          else symbolHTML = `${carta.symbol}`;
+  
+          cardsContainer.innerHTML += `
+          <div style="background-color: ${carta.color};" class="card" onclick="handleClick(this)">
+              <div class="logo">
+                  ${symbolHTML}
+              </div>
+          </div>
+          `;
+          
+          cont++;
+      }
+      sortCardsOnContainer();
+  }
+  
+  function renderOtherPlayers() {
+      for(let numPlayer = 1; numPlayer < 4; numPlayer++){
+  
+          let element = document.querySelector(".player-"+(numPlayer+1));
+          let logo = element.querySelector(".logo");
+          
+          if (players[numPlayer].length > 0) logo.innerHTML = players[numPlayer].length + "";
+          else logo.innerHTML = "WINS"; 
+      }
+  }
+  
+  function takeCard() {
+  
+      let currentPlayer = turn%4;
+      let takenCard = [];
+  
+      takenCard.push(deck[0]);
+      players[currentPlayer].push(deck[0]);
+      deck.shift();
+  
+      players[currentPlayer] = organizeCards(players[currentPlayer]);
+  
+      return takenCard[0];
+  }
+  
+  function handleClick(cardObject) {
+  
+      if (turn%4 != 0) return;
+  
+      const cardsContainer = document.getElementById("cardsContainer");
+      const myCards = [...cardsContainer.querySelectorAll(".card")];
+      const indexCard = myCards.findIndex(card => card == cardObject)
+  
+      let selectedCard = players[0][indexCard];
+  
+      if ( !isValidCard(selectedCard) ) return;
+  
+      // selection valide
+  
+      table.push( selectedCard );
+      players[0].splice(indexCard,1);
+      myCards[indexCard].remove();
+      sortCardsOnContainer();
+      renderTable();
+  
+      // tableau de table mis à jour
+      // tableau de cartes mis à jour
+      // écran mis à jour : table et conteneur de cartes
+  
+      myCards.forEach( card => card.classList.remove("my-turn") );
+  
+      // effet de mon tour supprimé
+  
+      handlePowerUps(selectedCard);
+  }
+  
+  function isValidCard(card) {
+  
+      let tableCard = table[table.length-1];
+  
+      if (card.symbol == tableCard.symbol || 
+          card.color == tableCard.color || 
+          card.color == "black") return true;
+  
+          return false;
+  }
+  
+  function handleTurn() {
+  
+      console.log(deck.length);
+  
+      for (let i = 0; i < players.length ; i++ ){
+          let player = players[i];
+          if (player.length == 0) {
+              console.log(`PLAYER ${i+1} WINS!!`);
+              if (i!=0) document.querySelector(".player-"+(i+1)).classList.add("winner");
+              else window.open("https://editor.p5js.org/metilbenceno/full/HLjn5u_O4");
+              return;
+          }
+      }
+  
+      for (let i = 1 ; i < 4 ; i++){
+          let turnOfObj = document.querySelector(".player-"+(i+1));
+          if (i == turn%4){
+              turnOfObj.classList.add("turnOf");
+          } else {
+              turnOfObj.classList.remove("turnOf");
+          }
+      }
+      
+      let validCards = 0;
+  
+      players[turn%4].forEach( card => {
+          if (isValidCard(card)) validCards++;
+      });
+  
+      // s'il n'y a PAS de cartes valides à jouer 
+  
+      if (validCards == 0) {
+          takeCardActions();
+          return;
+      }
+  
+      // s'il y a des cartes valides à jouer 
+  
+      placeCardActions();
+  }
+  
+  function takeCardActions() {
+  
+      currentPlayer = turn%4;
+  
+      if (currentPlayer == 0) {
+          console.log("You have not cards to place");
+          let deckObject = document.getElementById("deck");
+          deckObject.classList.add("my-time");
+          renderDeck();
+      } else {
+          setTimeout(() => {
+              console.log(`Player ${currentPlayer+1} is taking a card`);
+              let takenCard = takeCard();
+              if ( !isValidCard(takenCard) ){
+                  setTimeout(() => {
+                      renderOtherPlayers();
+                      console.log(`Player ${currentPlayer+1} has not cards to place`);
+                      turn += direction;
+                      handleTurn();
+                      return;
+                  },1500)
+              } else {
+                  setTimeout(() => {
+                      renderOtherPlayers();
+                      placeCardActions();
+                  },1200);
+              }
+          },1000);
+      }
+  }
+  
+  function turnDeckCard(deckObject) {
+  
+      if ( !deckObject.classList.contains("my-time") ) return;
+  
+      deckObject.classList.toggle("turned");
+  
+      let takenCard = takeCard();
+  
+      if ( !isValidCard(takenCard) ){
+          console.log("Can not place this card");
+          setTimeout(() => {
+              deckObject.classList.toggle("turned");
+              renderUserCards();
+              turn += direction;
+              handleTurn();
+          },1200);
+      } else {
+          console.log("Placing card");
+          setTimeout(() => {
+              deckObject.classList.toggle("turned");
+              let indexCard = players[0].findIndex(card => card == takenCard);
+              table.push( takenCard );
+              players[0].splice(indexCard,1);
+              renderTable();
+              handlePowerUps(takenCard);
+          },1200)
+      }
+      deckObject.classList.remove("my-time");
+  }
+  
+  function placeCardActions(){
+  
+      let currentPlayer = turn%4;
+      
+      if (currentPlayer==0) {
+  
+          console.log("It's your time!");
+          let cardsObject = [...document.querySelector(".cards-container").children];
+          let cardsInfo = players[0];
+  
+          if (cardsObject.length != cardsInfo.length) console.log("SOMETHING WENT WRONG!");
+  
+          for(let i = 0; i < cardsInfo.length ; i++) {
+              if(isValidCard(cardsInfo[i])) cardsObject[i].classList.add("my-turn");
+          }
+  
+      } else {
+          //Logique pour les autres joueurs...
+  
+          console.log(`Player ${currentPlayer+1} is thinking`);
+  
+          let validCards = players[currentPlayer].filter(card => isValidCard(card));
+  
+          let jokers = validCards.filter(validCard => validCard.color == "black");
+          let noJokers = validCards.filter(validCard => validCard.color != "black");
+  
+          let selectedCard;
+          if ( noJokers.length > 0 ) {
+              noJokers = noJokers.sort((a,b) => {
+                  if (a.symbol > b.symbol) return 1;
+                  if (a.symbol < b.symbol) return -1;
+                  return 0;
+              });
+              selectedCard = noJokers[noJokers.length-1];
+          } else if (jokers.length > 0) {
+              selectedCard = jokers[0];
+          } else {
+              console.log("SOMETHING WENT WRONG!!")
+          }
+  
+          let index = players[currentPlayer].findIndex(card => card == selectedCard);
+  
+          table.push(selectedCard);
+          players[currentPlayer].splice(index,1);
+  
+          setTimeout(() => {
+              renderTable();
+              renderOtherPlayers();
+              handlePowerUps(selectedCard);
+          },3000);
+      }
+  }
+  
+  function handlePowerUps(selectedCard) {
+  
+      // c'est un nombre
+  
+      if ( !isNaN(parseInt( selectedCard.symbol )) ) {
+          turn += direction;
+          handleTurn();
+          return;
+      }
+  
+      // Ce n'est pas un NOMBRE:
+  
+      if (selectedCard.symbol == "reverse") {
+  
+          const reverseIcon = document.getElementById("table");
+          reverseIcon.classList.toggle("inverse");
+  
+          direction *= -1;
+          turn += direction;
+          handleTurn();
+          return;
+      }
+  
+      if (selectedCard.symbol == "block") {
+          turn += direction;
+          if(turn%4 != 0) document.querySelector(".player-"+(turn%4+1)).classList.add("blocked");
+          setTimeout(() => {
+              if(turn%4 != 0) document.querySelector(".player-"+(turn%4+1)).classList.remove("blocked");
+              turn += direction;
+              handleTurn();
+              return;
+          },1000);
+      }
+  
+      if (selectedCard.symbol == "p2") {
+          turn += direction;
+          if(turn%4 != 0) document.querySelector(".player-"+(turn%4+1)).classList.add("blocked");
+          takeCard();
+          takeCard();
+          setTimeout(() => {
+              if(turn%4 != 0) document.querySelector(".player-"+(turn%4+1)).classList.remove("blocked");
+              turn += direction;
+              renderOtherPlayers();
+              renderUserCards();
+              handleTurn();
+              return;
+          },1000);
+      }
+  
+      if (selectedCard.symbol == "changeColor" || selectedCard.symbol == "p4") {
+  
+          if(turn%4==0) {
+              chooseColor(selectedCard);
+              return;
+          } else {
+              console.log(`Player ${turn%4+1} is choosing a color`);
+              setTimeout(() => {
+                  chooseColor(selectedCard);
+                  return;
+              },2000)
+          }
+      }
+  }
+  
+  function chooseColor(selectedCard) {
+  
+      let currentPlayer = turn%4;
+  
+      if ( currentPlayer == 0 ){
+          let chooseColorWindow = document.querySelector(".choose-color-window");
+          chooseColorWindow.classList.remove("hide");
+  
+          let optionColors = [...chooseColorWindow.querySelectorAll(".color")];
+  
+          optionColors.forEach(color => color.addEventListener("click", (e) => {
+              let objectColor = e.target;
+              let indexColor = optionColors.findIndex(color => color == objectColor);
+              let chosenColor = colors[indexColor];
+  
+              chooseColorWindow.classList.add("hide");
+  
+              table.pop();
+              let card = {
+                  color: chosenColor,
+                  symbol: selectedCard.symbol
+              }
+              table.push(card);
+              renderTable();
+  
+              if ( selectedCard.symbol == "p4" ) {
+                  turn += direction;
+                  if(turn%4 != 0) document.querySelector(".player-"+(turn%4+1)).classList.add("blocked");
+                  takeCard();
+                  takeCard();
+                  takeCard();
+                  takeCard();
+                  setTimeout(() => {
+                      if(turn%4 != 0) document.querySelector(".player-"+(turn%4+1)).classList.remove("blocked");
+                      turn += direction;
+                      renderOtherPlayers();
+                      handleTurn();
+                      return;
+                  },1000);
+              } else {
+                  turn += direction;
+                  handleTurn();
+                  return;
+              }
+          }));
+      } else {
+          let cardsOfPlayer = players[currentPlayer];
+          let numCardsEachColor = [];
+          colors.forEach(color => {
+              let cardsSameColor = cardsOfPlayer.filter(card => card.color == color);
+              numCardsEachColor.push( cardsSameColor.length );
+          });
+  
+          let index = numCardsEachColor.indexOf(Math.max(...numCardsEachColor));
+          let chosenColor = colors[index];
+  
+          table.pop();
+          let card = {
+              color: chosenColor,
+              symbol: selectedCard.symbol
+          }
+          table.push(card);
+          renderTable();
+  
+          if ( selectedCard.symbol == "p4") {
+              turn += direction;
+              if(turn%4 != 0) document.querySelector(".player-"+(turn%4+1)).classList.add("blocked");
+              takeCard();
+              takeCard();
+              takeCard();
+              takeCard();
+              setTimeout(() => {
+                  if(turn%4 != 0) document.querySelector(".player-"+(turn%4+1)).classList.remove("blocked");
+                  turn += direction;
+                  renderOtherPlayers();
+                  renderUserCards();
+                  handleTurn();
+                  return;
+              },1000);
+          } else {
+              turn += direction;
+              handleTurn();
+              return;
+          }
+      }
+  }
+  
+  // 
+  // 
+  // 
+  
+  createCards();
+  shuffleCards();
+  giveCardsToPlayers();
+  startTable();
+  
+  renderTable();
+  renderUserCards();
+  renderOtherPlayers();
+  renderDeck();
+  
+  handleTurn();  
   
   setTimeout(() => {
-    const nouvelleCarte = carte.cloneNode(true);
+    const nouvelleCarte = card.cloneNode(true);
     nouvelleCarte.style.zIndex = "100"; // Met la nouvelle carte au premier plan
     pile.appendChild(nouvelleCarte);
     nouvelleCarte.style.transition = "";
     nouvelleCarte.style.transform = "";
-    carte.parentNode.removeChild(carte);
+    carte.parentNode.removeChild(card);
   }, 500);
   
-  
-}
+  ////.************
+    

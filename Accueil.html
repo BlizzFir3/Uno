@@ -8,39 +8,13 @@
 </head>
 <body>
 	<h1 class="text-white" style="font-weight: bold; margin-top: 30px;">Jeu de UNO en ligne</h1>
-	<div class="open-btn"></div>
-	<div class="card" style="width: 18rem; margin-left: 600px; margin-top: 150px;">
-		<img src="img/UNO-L.png" class="card-img-top">
-		<div class="card-body">
-		  <h5 class="card-title">Créer une partie</h5>
-		  <button type="button" class="open-button" onclick="openForm()">Créer une partie</button>
-		</div>
-	</div>
+	<div class="open-btn"></div><br>
+	<div class="btn-group" role="group" aria-label="Basic example">
+		<button type="button" class="btn btn-primary" onclick="openForm()">Créer une partie</button>
+		<button type="button" class="btn btn-primary" onclick="openFormu()">Rejoindre une partie</button>
+	  </div>
 	  	
-	<!--- <div class="uno-card">
-		<div class="number">+2</div>
-		<div class="symbol">+</div>
-		<div class="color red"></div>
-		</div> --->
-		<!---<div class="uno-hand">
-			<div class="uno-card">
-				<div class="number">7</div>
-				<div class="symbol"></div>
-				<div class="color red"></div>
-			</div>
-			<div class="uno-card">
-				<div class="number">Skip</div>
-				<div class="symbol"><img src="img\skip.png" alt="Skip" height="35px"></div>
-				<div class="color yellow"></div>
-			</div>
-			<div class="uno-card">
-				<div class="number">0</div>
-				<div class="symbol"></div>
-				<div class="color green"></div>
-			</div>
-		</div> --->
-		
-    <div class="login-popup">
+	<div class="login-popup">
       <div class="form-popup" id="popupForm">
         <form action="/action_page.php" class="form-container">
           <h2>Créer une partie</h2>
@@ -53,15 +27,7 @@
         </form>
       </div>
     </div>
-	<div class="box">
-        <div class="card" style="width: 18rem; margin-left: 50%; margin-top: -334px;">
-			<img src="img/UNO-LR1.png" class="card-img-top">
-			<div class="card-body">
-			  <h5 class="card-title">Rejoindre une partie</h5>
-			  <button type="button" class="open-button" onclick="openFormu()">Cliquez ici</button>
-			</div>
-		</div>
-    </div>
+
     <div class="login-popup">
 		<div class="formu-popup" id="popupFormu">
 		  <form action="/action_page.php" class="formu-container">
