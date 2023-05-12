@@ -115,14 +115,14 @@ function LoadUnoGame(){
   
       let symbolHTML;
       
-      let carta = deck[0];
+      let carte = deck[0];
   
-      if ( carta.symbol == "reverse" ) symbolHTML = '<ion-icon name="refresh-outline"></ion-icon>';
-      else if ( carta.symbol == "block" ) symbolHTML = '<ion-icon name="ban-outline"></ion-icon>';
-      else if ( carta.symbol == "changeColor" ) symbolHTML = '<ion-icon name="color-palette-outline"></ion-icon>';
-      else if ( carta.symbol == "p2" ) symbolHTML = `<p>+2</p>`;
-      else if ( carta.symbol == "p4" ) symbolHTML = `<p>+4</p>`;
-      else symbolHTML = `<p>${carta.symbol}</p>`;
+      if ( carte.symbol == "reverse" ) symbolHTML = '<ion-icon name="refresh-outline"></ion-icon>';
+      else if ( carte.symbol == "block" ) symbolHTML = '<ion-icon name="ban-outline"></ion-icon>';
+      else if ( carte.symbol == "changeColor" ) symbolHTML = '<ion-icon name="color-palette-outline"></ion-icon>';
+      else if ( carte.symbol == "p2" ) symbolHTML = `<p>+2</p>`;
+      else if ( carte.symbol == "p4" ) symbolHTML = `<p>+4</p>`;
+      else symbolHTML = `<p>${carte.symbol}</p>`;
   
       deckObject.innerHTML = `
   
@@ -131,7 +131,7 @@ function LoadUnoGame(){
               UNO
           </div>
       </div>
-      <div style="background-color: ${carta.color};" class="card frente">
+      <div style="background-color: ${carte.color};" class="card frente">
           <div class="logo">
               ${symbolHTML}
           </div>
@@ -144,23 +144,23 @@ function LoadUnoGame(){
       let tableCardObject = document.getElementById("tableCard");
       let numCards = tableCardObject.children.length;
   
-      let carta = table[table.length-1];
+      let carte = table[table.length-1];
   
       let angle;
-      if (numCards == 0 || carta.symbol == "p4" || carta.symbol == "changeColor") angle = 0;
+      if (numCards == 0 || carte.symbol == "p4" || carte.symbol == "changeColor") angle = 0;
       else angle = ( Math.random() - 0.5 ) * 2 * 15;
       
       let symbolHTML;
   
-      if ( carta.symbol == "reverse" ) symbolHTML = '<ion-icon name="refresh-outline"></ion-icon>';
-      else if ( carta.symbol == "block" ) symbolHTML = '<ion-icon name="ban-outline"></ion-icon>';
-      else if ( carta.symbol == "changeColor" ) symbolHTML = '<ion-icon name="color-palette-outline"></ion-icon>';
-      else if ( carta.symbol == "p2" ) symbolHTML = `<p>+2</p>`;
-      else if ( carta.symbol == "p4" ) symbolHTML = `<p>+4</p>`;
-      else symbolHTML = `<p>${carta.symbol}</p>`;
+      if ( carte.symbol == "reverse" ) symbolHTML = '<ion-icon name="refresh-outline"></ion-icon>';
+      else if ( carte.symbol == "block" ) symbolHTML = '<ion-icon name="ban-outline"></ion-icon>';
+      else if ( carte.symbol == "changeColor" ) symbolHTML = '<ion-icon name="color-palette-outline"></ion-icon>';
+      else if ( carte.symbol == "p2" ) symbolHTML = `<p>+2</p>`;
+      else if ( carte.symbol == "p4" ) symbolHTML = `<p>+4</p>`;
+      else symbolHTML = `<p>${carte.symbol}</p>`;
   
       tableCardObject.innerHTML += `
-      <div style="background-color: ${carta.color}; transform: rotateZ(${angle}deg);" class="card">
+      <div style="background-color: ${carte.color}; transform: rotateZ(${angle}deg);" class="card">
           <div class="logo">
               ${symbolHTML}
           </div>
@@ -171,7 +171,7 @@ function LoadUnoGame(){
       if (numCards == 6) tableCardObject.children[0].remove();
   
       let turnLogo = document.querySelector(".table ion-icon");
-      turnLogo.style.color = carta.color;
+      turnLogo.style.color = carte.color;
   }
   
   function sortCardsOnContainer(){
@@ -209,19 +209,19 @@ function LoadUnoGame(){
       cardsContainer.innerHTML = "";
   
       let cont = 0;
-      for (let carta of players[0]) {
+      for (let carte of players[0]) {
   
           let symbolHTML;
   
-          if ( carta.symbol == "reverse" ) symbolHTML = '<ion-icon name="refresh-outline"></ion-icon>';
-          else if ( carta.symbol == "block" ) symbolHTML = '<ion-icon name="ban-outline"></ion-icon>';
-          else if ( carta.symbol == "changeColor" ) symbolHTML = '<ion-icon name="color-palette-outline"></ion-icon>';
-          else if ( carta.symbol == "p2" ) symbolHTML = '+2';
-          else if ( carta.symbol == "p4" ) symbolHTML = '+4';
-          else symbolHTML = `${carta.symbol}`;
+          if ( carte.symbol == "reverse" ) symbolHTML = '<ion-icon name="refresh-outline"></ion-icon>';
+          else if ( carte.symbol == "block" ) symbolHTML = '<ion-icon name="ban-outline"></ion-icon>';
+          else if ( carte.symbol == "changeColor" ) symbolHTML = '<ion-icon name="color-palette-outline"></ion-icon>';
+          else if ( carte.symbol == "p2" ) symbolHTML = '+2';
+          else if ( carte.symbol == "p4" ) symbolHTML = '+4';
+          else symbolHTML = `${carte.symbol}`;
   
           cardsContainer.innerHTML += `
-          <div style="background-color: ${carta.color};" class="card" onclick="handleClick(this)">
+          <div style="background-color: ${carte.color};" class="card" onclick="handleClick(this)">
               <div class="logo">
                   ${symbolHTML}
               </div>
